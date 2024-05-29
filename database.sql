@@ -1,0 +1,6 @@
+CREATE DATABASE NAGPDB;
+CREATE TABLE Party(
+    PartyId INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Address VARCHAR(50)
+);
