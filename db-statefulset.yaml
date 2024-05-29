@@ -31,9 +31,9 @@ spec:
         ports:
           - containerPort: 3306
         volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql2
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/nagp
       volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: pvc
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: pvc
