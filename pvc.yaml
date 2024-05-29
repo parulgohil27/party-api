@@ -5,9 +5,9 @@ metadata:
   # labels:
   #   app: mysql
 spec:
-  storageClassName: manual
+  storageClassName: "mysql-sc"
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 2Gi
+      storage: 1Gi

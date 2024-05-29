@@ -31,8 +31,9 @@ spec:
         ports:
           - containerPort: 3306
         volumeMounts:
-          - name: mysql-persistent-storage
-            mountPath: "/var/lib/nagp"
+          - mountPath: /var/lib/nagp
+            name: mysql-persistent-storage
+            readOnly: false
       volumes:
         - name: mysql-persistent-storage
           persistentVolumeClaim:
