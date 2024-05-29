@@ -8,9 +8,9 @@ metadata:
 spec:
   resources:
     requests:
-      storage:
+      storage: 1Gi
     limits:
-      storage:
+      storage: 1 Gi
   accessModes:
     - ReadWriteOnce
   storageClassName: standard-rwo
