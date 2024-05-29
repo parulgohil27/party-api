@@ -3,14 +3,10 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc
   labels:
-    name: datastore
     app: mysql
 spec:
+  accessModes:
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-    limits:
-      storage: 1 Gi
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: standard-rwo
