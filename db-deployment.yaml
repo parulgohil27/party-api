@@ -51,14 +51,12 @@ spec:
                 configMapKeyRef :
                   name : db-config
                   key :  dbName
-
-
           ports:
-            - containerPort: 3307
+            - containerPort: 3306
               name: mysql
           volumeMounts:        # Mounting voulume obtained from Persistent Volume Claim
             - name: mysql-persistent-storage
-              mountPath: /var/lib/mysql1 #This is the path in the container on which the mounting will take place.
+              mountPath: /var/lib/mysql #This is the path in the container on which the mounting will take place.
       volumes:
         - name: mysql-persistent-storage # Obtaining 'vloume' from PVC
           persistentVolumeClaim:
