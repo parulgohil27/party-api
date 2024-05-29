@@ -3,6 +3,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: mysql-sc
 provisioner: file.csi.azure.com # replace with "kubernetes.io/azure-file" if aks version is less than 1.21
+persistentVolumeReclaimPolicy: Retain
 # allowVolumeExpansion: true
 # mountOptions:
 #   - dir_mode=0777
