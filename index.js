@@ -6,9 +6,18 @@ const pool = require("./db");
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
-
 // parse application/json
 app.use(bodyParser.json())
+
+//test
+app.get("/helloworld", async(req, res) =>{
+    try {
+       res.send('Hello from Party API');
+        console.log("/helloworld resource called");
+    } catch (error) {
+        console.error(error.message);
+    }
+    });
 //post
 app.post("/addparty", async(req, res) =>{
 try {
