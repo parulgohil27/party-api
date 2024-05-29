@@ -5,16 +5,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: partyapi-k8s-mysql
+      app: partyapi
   replicas: 3
   template:
     metadata:
       labels:
-        app: partyapi-k8s-mysql
+        app: partyapi
     spec:
       containers:
         - name: partyapi
-          image: partyapi:1.0
+          image: parulgohil27/partyapi:1.0
           ports:
             - containerPort: 8080
           env:   # Setting Enviornmental Variables
@@ -41,18 +41,15 @@ spec:
                 secretKeyRef :
                   name : mysql-secrets
                   key :  password
-
 ---
-
-apiVersion: v1 # Kubernetes API version
-kind: Service # Kubernetes resource kind we are creating
-metadata: # Metadata of the resource kind we are creating
+apiVersion: v1 
+kind: Service
+metadata:
   name: partyapi-svc
 spec:
-  type: LoadBalancer # type of the service.
+  type: LoadBalancer
   selector:
-    app: partyapi-k8s-mysql
+    app: partyapi
   ports:
-    - port: 80 # The port that the service is running on in the cluster
+    - port: 3306 # The port that the service is running on in the cluster
       targetPort: 8080 # The port exposed by the service
-
