@@ -31,9 +31,14 @@ spec:
         ports:
           - containerPort: 3306
         volumeMounts:
-          - mountPath: /var/lib/mysql/data
-            name: mysql-persistent-storage
-      volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvc
+          - name: mysql-pvc
+            mountPath: /var/lib/mysql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-pvc
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 1Gi
