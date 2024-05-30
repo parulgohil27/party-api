@@ -1,22 +1,28 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: mysql-pod
+  labels:
+    name: mysql-pod
+    app: mysql-deployment
 spec:
-  serviceName: mysql
+  serviceName: mysql-pod
   replicas: 1
   selector:
     matchLabels:
-      app: mysql
+      app: mysql-deployment
+      name: mysql-pod
   template:
     metadata:
       labels:
-        app: mysql
-        selector: mysql
+        app: mysql-deployment
+        selector: mysql-pod
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
+        image: mysql:8.0.32
+        ports:
+          - containerPort: 3306
         args: ["--ignore-db-dir=lost+found"]
         env:
           - name: MYSQL_ROOT_PASSWORD
@@ -29,12 +35,10 @@ spec:
               configMapKeyRef :
                 name : db-config
                 key :  dbName
-        ports:
-          - containerPort: 3306
         volumeMounts:
-        - name: data-volume
-          mountPath: /var/lib/mysql/data
-      volumes:
-      - name: data-volume
-        PersistentVolumeClaim:
-            claimName: mysql-pvc
+          - name: mysql-data
+            mountPath: /var/lib/mysql/data
+    volumes:
+      - name: mysql-data
+        persistentVolumeClaim:
+          claimName: mysql-pvc
