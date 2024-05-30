@@ -17,8 +17,7 @@ spec:
       containers:
       - name: mysql
         image: mysql:5.7
-        args:
-          - "--ignore-db-dir=lost+found"
+        args: ["--ignore-db-dir=lost+found"]
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom :
@@ -33,14 +32,9 @@ spec:
         ports:
           - containerPort: 3306
         volumeMounts:
-          - name: mysql-pvc
-            mountPath: /var/lib/mysql/data
-  volumeClaimTemplates:
-    - metadata:
-        name: mysql-pvc
-      spec:
-        accessModes:
-          - ReadWriteOnce
-        resources:
-          requests:
-            storage: 1Gi
+        - name: data-volume
+          mountPath: /var/lib/mysql/data
+      volumes:
+      - name: data-volume
+        PersistentVolumeClaim:
+            claimName: mysql-pvc
