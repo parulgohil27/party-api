@@ -12,7 +12,7 @@ app.use(bodyParser.json())
 //test
 app.get("/helloworld", async(req, res) =>{
     try {
-       res.send('Hello from Party API');
+       res.send(':) Hello from Party API :)');
         console.log("/helloworld resource called");
     } catch (error) {
         console.error(error.message);
