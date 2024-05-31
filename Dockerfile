@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:21-slim
 
 ENV PORT=8080
 
@@ -8,8 +8,8 @@ COPY package*.json ./
 
 RUN npm install
 
-COPY . .
+COPY . ./
 
 EXPOSE 8080
 
- CMD [ "node", "index.js" ]
+ CMD [ "npm", "start" ]
