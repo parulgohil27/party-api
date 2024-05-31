@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-svc
+  labels:
+    name: mysql-svc
+    app: mysql-deployment
+spec:
+  clusterIP: None
+  selector:
+    app: mysql-deployment
+  ports:
+    - port: 3306
+      targetPort: 3306
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql-pod
+  labels:
+    name: mysql-pod
+    app: mysql-deployment
+spec:
+  serviceName: mysql-pod
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-deployment
+      name: mysql-pod
+  template:
+    metadata:
+      labels:
+        app: mysql-deployment
+        name: mysql-pod
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        # args:
+        #   - "--ignore-db-dir=lost+found"
+        ports:
+          - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom :
+              secretKeyRef :
+                name : mysql-secrets
+                key :  password
+          - name: MYSQL_DATABASE 
+            valueFrom :
+              configMapKeyRef :
+                name : db-config
+                key :  dbName
+        volumeMounts:
+          - name: mysql-data
+            mountPath: /var/lib/mysqldb2
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc

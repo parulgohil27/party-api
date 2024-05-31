@@ -1,0 +1,10 @@
+apiVersion : v1
+kind : ConfigMap
+metadata:
+  name : db-config
+  labels:
+    app : mysql-deployment
+    name: db-config
+data:
+  host : mysql
+  dbName: NAGPDB
