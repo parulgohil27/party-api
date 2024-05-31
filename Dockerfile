@@ -1,7 +1,5 @@
 FROM node:21-slim
 
-ENV PORT=8080
-
 WORKDIR /app
 
 COPY package*.json ./

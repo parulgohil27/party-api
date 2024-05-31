@@ -8,8 +8,7 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    app: mysql-deployment
-    name: mysql-pod
+    app: partyapi
   ports:
     - port: 3306
       targetPort: 3306
