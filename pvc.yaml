@@ -4,6 +4,7 @@ metadata:
   name: mysql-pvc
   labels:
     app: mysql-deployment
+    name: mysql-pvc
 spec:
   accessModes:
     - ReadWriteOnce

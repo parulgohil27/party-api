@@ -16,14 +16,15 @@ spec:
     metadata:
       labels:
         app: mysql-deployment
-        selector: mysql-pod
+        name: mysql-pod
     spec:
       containers:
       - name: mysql
-        image: mysql:8.0.32
+        image: mysql:5.7
+        # args:
+        #   - "--ignore-db-dir=lost+found"
         ports:
           - containerPort: 3306
-        args: ["--ignore-db-dir=lost+found"]
         env:
           - name: MYSQL_ROOT_PASSWORD
             valueFrom :
@@ -37,8 +38,13 @@ spec:
                 key :  dbName
         volumeMounts:
           - name: mysql-data
-            mountPath: /var/lib/mysql/data
-    volumes:
-      - name: mysql-data
-        persistentVolumeClaim:
-          claimName: mysql-pvc
+            mountPath: /var/lib/mysqldb2
+          # - name: mysql-initdb
+          #   mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        # - name: mysql-initdb
+        #   configMap:
+        #     name: db-config
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-pvc

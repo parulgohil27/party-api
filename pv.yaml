@@ -4,6 +4,8 @@ metadata:
   name: mysql-pv
   labels:
     type: local
+    app: mysql-deployment
+    name: mysql-pv
 spec:
   capacity:
     storage: 1Gi

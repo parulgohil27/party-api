@@ -1,0 +1,15 @@
+apiVersion : v1
+kind : ConfigMap
+metadata:
+  name : db-config
+  labels:
+    app : mysql-deployment
+    name: db-config
+data:
+  host : mysql
+  dbName: NAGPDB
+  # init.sql: |
+  #   CREATE DATABASE IF NOT EXISTS 'NAGPDB';
+  #   USE 'NAGPDB';
+  #   CREATE TABLE Party (PartyId INT PRIMARY KEY,Name VARCHAR(50),Address VARCHAR(50));
+  #   INSERT INTO Party (PartyId, Name, Address) VALUES (1001,'Parul','UK');
