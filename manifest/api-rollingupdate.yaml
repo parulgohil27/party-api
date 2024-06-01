@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: partyapi
-          image: us-central1-docker.pkg.dev/nagp2024-424905/api-repo/partyapi-gke:1.0
+          image: us-central1-docker.pkg.dev/nagp2024-424905/api-repo/partyapi-gke:2.0
           resources:
             limits:
               cpu: 100m
