@@ -35,7 +35,7 @@ try {
 });
 
 //get All Parties
-app.get("/getpartydetails", async(req, res) =>{
+app.get("/parties", async(req, res) =>{
     try {
         const party = await pool.query("select * from Party");
         res.json(party[0]);
