@@ -6,5 +6,5 @@ metadata:
     app : mysql-deployment
     name: db-config
 data:
-  host : mysql
+  host : 10.100.0.131
   dbName: NAGPDB
