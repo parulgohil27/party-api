@@ -17,6 +17,6 @@
 
 - I have used Artifact Registry (Gcloud bucket storage) to build API image : https://console.cloud.google.com/artifacts/docker/nagp2024-424905/us-central1/api-repo/partyapi-gke?hl=en&project=nagp2024-424905
 
-- OneDrive link for recording : party-api
+- OneDrive link for recording : https://nagarro-my.sharepoint.com/:v:/p/parul_gohil/EXyr0FT6uPdIlScgy3vg9HkBabjeKUxTYkKBrUX_IpZmtQ?e=Klm9zX
 
 - Service API Tier URL : http://35.202.144.170:8080/parties
