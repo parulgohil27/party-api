@@ -11,11 +11,12 @@
     pvc.yaml - yaml file for PersistentVolumeClaim
     secrets.yaml - yaml file for Secrets
 
-- Docker image is uploaded in Dockerhub : docker pull parulgohil27/partyapi
+- Docker image is uploaded in Dockerhub : 
+    docker pull parulgohil27/partyapi
+    https://hub.docker.com/r/parulgohil27/partyapi/tags
 
 - I have used Artifact Registry (Gcloud bucket storage) to build API image : https://console.cloud.google.com/artifacts/docker/nagp2024-424905/us-central1/api-repo/partyapi-gke?hl=en&project=nagp2024-424905
 
 - OneDrive link for recording : party-api
 
-- Service API Tier URL : http://{{LoadBalancerExternalIP}}:8080/parties
-
+- Service API Tier URL : http://35.202.144.170:8080/parties
